@@ -516,8 +516,6 @@ const SectionComponent = ({ section: originalSection }: { section: MenuSection }
     );
 };
 
-import { MenuItem as MenuItemType, MenuSection } from './types';
-
 export default function MenuClient({ sections }: { sections: MenuSection[] }) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');

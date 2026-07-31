@@ -65,7 +65,7 @@ export default function PublicMenuPreviewPage({ params }: { params: Promise<{ sl
       title: cat,
       items: items.filter((i) => (i.category || 'Specials') === cat).map((i, iIdx) => ({
         name: i.name,
-        price: i.price_rupees ? `₹${i.price_rupees}` : '',
+        price: i.price ? `₹${i.price}` : '',
         description: i.description,
         isMostOrdered: iIdx === 0,
       })),

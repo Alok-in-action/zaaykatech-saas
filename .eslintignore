@@ -1,0 +1,6 @@
+node_modules
+.next
+external_templates
+coverage
+out
+build
