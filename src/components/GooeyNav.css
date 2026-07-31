@@ -1,0 +1,114 @@
+:root {
+  --color-1: #5932e6;
+  --color-2: #8c4bff;
+  --color-3: #5932e6;
+  --color-4: #8c4bff;
+  --color-5: #ffffff;
+}
+
+.gooey-nav-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gooey-nav-container nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: transparent;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.gooey-nav-container nav li {
+  position: relative;
+  z-index: 2;
+}
+
+.gooey-nav-container nav li.active a {
+  color: #fff;
+}
+
+.gooey-nav-container nav a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  color: var(--color-5);
+  transition: color 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+  position: relative;
+  z-index: 2;
+}
+
+.effect {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 999px;
+}
+
+.effect.filter {
+  filter: url("#gooey");
+}
+
+.effect.text {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  text-align: center;
+  transition: opacity 0.4s cubic-bezier(0.2, 1, 0.2, 1), transform 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.effect.text.active {
+  opacity: 1;
+}
+
+.particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1px;
+  height: 1px;
+}
+
+.particle .point {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--color, #fff);
+}
+
+.filter.active .particle {
+  animation: move var(--time, 1s) ease-in-out forwards;
+}
+
+.filter.active .particle .point {
+  animation: scale var(--time, 1s) ease-in-out forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--end-x, 0), var(--end-y, 0)) scale(var(--scale, 1)) rotate(var(--rotate, 0));
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  20%, 80% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
