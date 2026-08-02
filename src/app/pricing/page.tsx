@@ -1,8 +1,7 @@
 "use client";
 import { Home as HomeIcon, Info, Briefcase, IndianRupee, MessageCircle, LogIn } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { PillBase } from '@/components/ui/3d-adaptive-navigation-bar';
-import { ModeToggle } from '@/components/mode-toggle';
+import { MobileTopNav } from '@/components/ui/mobile-top-nav';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import PricingCards from '@/components/ui/pricing-component';
 
@@ -23,15 +22,8 @@ export default function PricingPage() {
         <NavBar items={desktopNavItems} />
       </div>
 
-      {/* Mobile Navigation & Theme Toggle Wrapper */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex md:hidden items-center gap-4 w-fit pointer-events-none">
-        <div className="pointer-events-auto">
-          <PillBase />
-        </div>
-        <div className="bg-background/80 backdrop-blur-md rounded-full border border-border p-1 shadow-lg pointer-events-auto">
-          <ModeToggle />
-        </div>
-      </div>
+      {/* Mobile Top Navigation & Dropdown */}
+      <MobileTopNav items={desktopNavItems} />
       <main className="flex-grow">
         <section className="py-24 md:py-32 bg-background">
           <div className="container mx-auto px-4">

@@ -19,8 +19,7 @@ import {
   LogIn,
 } from 'lucide-react';
 import Footer from '@/components/Footer';
-import { PillBase } from '@/components/ui/3d-adaptive-navigation-bar';
-import { ModeToggle } from '@/components/mode-toggle';
+import { MobileTopNav } from '@/components/ui/mobile-top-nav';
 import { NavBar } from '@/components/ui/tubelight-navbar';
 import { AnimatedMarqueeHero } from '@/components/ui/hero-3';
 import TestimonialsV2 from '@/components/ui/testimonial-v2';
@@ -291,15 +290,8 @@ export default function Home() {
         <NavBar items={desktopNavItems} />
       </div>
 
-      {/* Mobile Navigation & Theme Toggle Wrapper */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex md:hidden items-center gap-4 w-fit pointer-events-none">
-        <div className="pointer-events-auto">
-          <PillBase />
-        </div>
-        <div className="bg-background/80 backdrop-blur-md rounded-full border border-border p-1 shadow-lg pointer-events-auto">
-          <ModeToggle />
-        </div>
-      </div>
+      {/* Mobile Top Navigation & Dropdown */}
+      <MobileTopNav items={desktopNavItems} />
       <main className="flex-grow">
         {/* Hero Section */}
         <AnimatedMarqueeHero
