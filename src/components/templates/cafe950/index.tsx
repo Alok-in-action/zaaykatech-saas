@@ -987,7 +987,7 @@ export default function MenuClient({ sections }: { sections: MenuSection[] }) {
                     className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#8B4A27] text-white shadow-lg hover:bg-[#6B3A20] transition-all duration-300 flex items-center justify-center z-50 animate-in fade-in slide-in-from-bottom"
                     aria-label="Back to top"
                 >
-                    <iconify-icon icon="solar:alt-arrow-up-linear" width="20" class="sm:w-6"></iconify-icon>
+                    <iconify-icon icon="solar:alt-arrow-up-linear" width="20" className="sm:w-6"></iconify-icon>
                 </button>
             )}
         </>
