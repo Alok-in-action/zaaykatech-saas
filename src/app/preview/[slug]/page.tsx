@@ -5,6 +5,11 @@ import { createClient } from '@/lib/supabase/client';
 import { type MenuItem } from '@/lib/ai/menuParser';
 import { Search, MapPin, Phone, Clock, Instagram, Sparkles, UtensilsCrossed } from 'lucide-react';
 import Cafe950Theme from '@/components/templates/cafe950';
+import MakedPayTheme from '@/components/templates/maked-pay';
+import BombayDarbarTheme from '@/components/templates/bombay-darbar';
+import MontoMenuTheme from '@/components/templates/monto-menu';
+import AnjushreeTheme from '@/components/templates/anjushree';
+import MadhubanTheme from '@/components/templates/madhuban';
 
 
 interface Restaurant {
@@ -58,7 +63,8 @@ export default function PublicMenuPreviewPage({ params }: { params: Promise<{ sl
     );
   }
 
-  if (rest.theme_choice === 'cafe950' || rest.theme_choice === 'cafe') {
+  const customThemes = ['cafe950', 'cafe', 'makedpay', 'bombaydarbar', 'montomenu', 'anjushree', 'madhuban'];
+  if (customThemes.includes(rest.theme_choice?.toLowerCase())) {
     const sectionCats = Array.from(new Set(items.map((i) => i.category || 'Specials')));
     const sections = sectionCats.map((cat, idx) => ({
       id: `sec-${idx}`,
@@ -70,7 +76,26 @@ export default function PublicMenuPreviewPage({ params }: { params: Promise<{ sl
         isMostOrdered: iIdx === 0,
       })),
     }));
-    return <Cafe950Theme sections={sections} />;
+
+    const theme = rest.theme_choice?.toLowerCase();
+    if (theme === 'cafe950' || theme === 'cafe') {
+      return <Cafe950Theme sections={sections} />;
+    }
+    if (theme === 'makedpay') {
+      return <MakedPayTheme sections={sections} restaurantName={rest.name} />;
+    }
+    if (theme === 'bombaydarbar') {
+      return <BombayDarbarTheme sections={sections} restaurantName={rest.name} />;
+    }
+    if (theme === 'montomenu') {
+      return <MontoMenuTheme sections={sections} restaurantName={rest.name} />;
+    }
+    if (theme === 'anjushree') {
+      return <AnjushreeTheme sections={sections} restaurantName={rest.name} />;
+    }
+    if (theme === 'madhuban') {
+      return <MadhubanTheme sections={sections} restaurantName={rest.name} />;
+    }
   }
 
   const primaryColor = rest.primary_color || '#f97316';

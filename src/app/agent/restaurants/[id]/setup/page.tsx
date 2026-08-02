@@ -34,7 +34,7 @@ const COLORS = [
   { name: 'Midnight Charcoal', hex: '#334155' },
 ];
 
-const THEMES = ['Modern', 'Classic', 'Minimalist', 'Vibrant', 'Cafe950'];
+const THEMES = ['Modern', 'Classic', 'Minimalist', 'Vibrant', 'Cafe950', 'MakedPay', 'BombayDarbar', 'MontoMenu', 'Anjushree', 'Madhuban'];
 
 export default function RestaurantSetupPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
