@@ -516,7 +516,15 @@ const SectionComponent = ({ section: originalSection }: { section: MenuSection }
     );
 };
 
-export default function MenuClient({ sections }: { sections: MenuSection[] }) {
+interface Cafe950ThemeProps {
+  sections: MenuSection[];
+  restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
+}
+
+export default function MenuClient({ sections, restaurantName = "Artisan Cafe", phone, instagram, address }: Cafe950ThemeProps) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [showBackToTop, setShowBackToTop] = useState(false);
@@ -598,15 +606,13 @@ export default function MenuClient({ sections }: { sections: MenuSection[] }) {
     return (
         <>
             <header className="pt-6 sm:pt-8 pb-4 px-4 sm:px-6 flex justify-between items-center max-w-7xl mx-auto">
-                <div className="flex items-center gap-2 reveal active">
-                    <Image
-                        src="/logo.png"
-                        alt="Cafe 9:50 Logo"
-                        width={180}
-                        height={60}
-                        className="h-12 w-auto object-contain"
-                        priority
-                    />
+                <div className="flex items-center gap-2.5 reveal active">
+                    <div className="w-9 h-9 rounded-xl bg-[#8B4A27] text-white flex items-center justify-center shadow-md">
+                        <iconify-icon icon="solar:cup-hot-bold" width="22"></iconify-icon>
+                    </div>
+                    <span className="text-xl sm:text-2xl font-bold text-[#5A2E1B] tracking-tight font-serif">
+                        {restaurantName}
+                    </span>
                 </div>
                 <div className="flex items-center gap-3">
                     <button
@@ -651,51 +657,51 @@ export default function MenuClient({ sections }: { sections: MenuSection[] }) {
 
                             {/* Menu Items */}
                             <nav className="space-y-4">
-                                <a
-                                    href="https://www.instagram.com/CAFENINE50"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#8B4A27]/5 transition-colors group"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
-                                        <iconify-icon icon="hugeicons:instagram" width="24" className="text-white"></iconify-icon>
-                                    </div>
-                                    <div className="flex-1">
-                                        <p className="font-sans text-sm font-semibold text-[#5A2E1B] group-hover:text-[#8B4A27] transition-colors">Instagram</p>
-                                        <p className="font-sans text-xs text-gray-500">@cafenine50</p>
-                                    </div>
-                                    <iconify-icon icon="solar:alt-arrow-right-linear" width="20" className="text-gray-400 group-hover:text-[#8B4A27] transition-colors"></iconify-icon>
-                                </a>
+                                {instagram && (
+                                    <a
+                                        href={instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#8B4A27]/5 transition-colors group"
+                                    >
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
+                                            <iconify-icon icon="hugeicons:instagram" width="24" className="text-white"></iconify-icon>
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="font-sans text-sm font-semibold text-[#5A2E1B] group-hover:text-[#8B4A27] transition-colors">Instagram</p>
+                                            <p className="font-sans text-xs text-gray-500">{instagram}</p>
+                                        </div>
+                                        <iconify-icon icon="solar:alt-arrow-right-linear" width="20" className="text-gray-400 group-hover:text-[#8B4A27] transition-colors"></iconify-icon>
+                                    </a>
+                                )}
 
-                                <a
-                                    href="tel:+918349476548"
-                                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#8B4A27]/5 transition-colors group"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
-                                        <iconify-icon icon="solar:phone-linear" width="24" className="text-white"></iconify-icon>
-                                    </div>
-                                    <div className="flex-1">
-                                        <p className="font-sans text-sm font-semibold text-[#5A2E1B] group-hover:text-[#8B4A27] transition-colors">Call Us</p>
-                                        <p className="font-sans text-xs text-gray-500">+91 8349476548</p>
-                                    </div>
-                                    <iconify-icon icon="solar:alt-arrow-right-linear" width="20" className="text-gray-400 group-hover:text-[#8B4A27] transition-colors"></iconify-icon>
-                                </a>
+                                {phone && (
+                                    <a
+                                        href={`tel:${phone}`}
+                                        className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#8B4A27]/5 transition-colors group"
+                                    >
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center flex-shrink-0">
+                                            <iconify-icon icon="solar:phone-linear" width="24" className="text-white"></iconify-icon>
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="font-sans text-sm font-semibold text-[#5A2E1B] group-hover:text-[#8B4A27] transition-colors">Call Us</p>
+                                            <p className="font-sans text-xs text-gray-500">{phone}</p>
+                                        </div>
+                                        <iconify-icon icon="solar:alt-arrow-right-linear" width="20" className="text-gray-400 group-hover:text-[#8B4A27] transition-colors"></iconify-icon>
+                                    </a>
+                                )}
 
-                                <a
-                                    href="https://g.page/r/CWIq9zqRzizWEBM/review"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-[#8B4A27]/5 transition-colors group"
-                                >
-                                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center flex-shrink-0">
-                                        <iconify-icon icon="solar:star-linear" width="24" className="text-white"></iconify-icon>
+                                {address && (
+                                    <div className="flex items-center gap-4 p-4 rounded-xl bg-[#8B4A27]/5 group">
+                                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center flex-shrink-0">
+                                            <iconify-icon icon="solar:map-point-linear" width="24" className="text-white"></iconify-icon>
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="font-sans text-sm font-semibold text-[#5A2E1B]">Our Location</p>
+                                            <p className="font-sans text-xs text-gray-500 leading-relaxed">{address}</p>
+                                        </div>
                                     </div>
-                                    <div className="flex-1">
-                                        <p className="font-sans text-sm font-semibold text-[#5A2E1B] group-hover:text-[#8B4A27] transition-colors">Review Us</p>
-                                        <p className="font-sans text-xs text-gray-500">Google Reviews</p>
-                                    </div>
-                                    <iconify-icon icon="solar:alt-arrow-right-linear" width="20" className="text-gray-400 group-hover:text-[#8B4A27] transition-colors"></iconify-icon>
-                                </a>
+                                )}
                             </nav>
                         </div>
                     </div>
@@ -945,37 +951,36 @@ export default function MenuClient({ sections }: { sections: MenuSection[] }) {
                         <iconify-icon icon="solar:donut-bitten-linear" width="24" className="text-[#8B4A27] opacity-50"></iconify-icon>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-8 sm:gap-6 mb-12 text-[#8B4A27] w-full max-w-3xl">
-                        <a href="https://www.instagram.com/CAFENINE50" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
-                            <iconify-icon icon="hugeicons:instagram" width="24"></iconify-icon>
-                            <span className="font-sans text-[11px] lowercase tracking-wider">@cafenine50</span>
-                        </a>
-                        <a href="tel:+918349476548" className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
-                            <iconify-icon icon="solar:phone-linear" width="24"></iconify-icon>
-                            <span className="font-sans text-[11px] tracking-wider">+91 8349476548</span>
-                        </a>
-                        <a href="http://CAFENINE50.COM" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
-                            <iconify-icon icon="solar:globus-linear" width="24"></iconify-icon>
-                            <span className="font-sans text-[11px] uppercase tracking-wider">cafenine50.com</span>
-                        </a>
-                        <a href="https://www.google.com/search?q=cafe+9:50+reviews&zx=1770143981473&no_sw_cr=1#ebo=1" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
-                            <iconify-icon icon="solar:star-linear" width="24"></iconify-icon>
-                            <span className="font-sans text-[11px] lowercase tracking-wider">review us</span>
-                        </a>
-                    </div>
+                    {(instagram || phone) && (
+                        <div className="flex flex-wrap items-center justify-center gap-8 mb-10 text-[#8B4A27] w-full max-w-xl">
+                            {instagram && (
+                                <a href={instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram}`} target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
+                                    <iconify-icon icon="hugeicons:instagram" width="24"></iconify-icon>
+                                    <span className="font-sans text-[11px] tracking-wider">{instagram}</span>
+                                </a>
+                            )}
+                            {phone && (
+                                <a href={`tel:${phone}`} className="hover:scale-105 transition-transform flex flex-col items-center gap-2">
+                                    <iconify-icon icon="solar:phone-linear" width="24"></iconify-icon>
+                                    <span className="font-sans text-[11px] tracking-wider">{phone}</span>
+                                </a>
+                            )}
+                        </div>
+                    )}
 
-                    <div className="max-w-md mx-auto mb-10 text-center">
-                        <p className="font-sans text-[10px] text-[#5A2E1B]/60 uppercase tracking-[0.2em] mb-3">Visit Us</p>
-                        <p className="font-sans text-[12px] text-[#5A2E1B] leading-relaxed">
-                            5, AZAD NAGAR, INFRONT OF PUSHPA MISSION HOSPITAL,<br />
-                            UJJAIN (M.P) 456010
-                        </p>
-                    </div>
+                    {address && (
+                        <div className="max-w-md mx-auto mb-10 text-center">
+                            <p className="font-sans text-[10px] text-[#5A2E1B]/60 uppercase tracking-[0.2em] mb-2">Visit Us</p>
+                            <p className="font-sans text-[12px] text-[#5A2E1B] leading-relaxed">
+                                {address}
+                            </p>
+                        </div>
+                    )}
 
                     <div className="w-full border-t border-[#8B4A27]/5 pt-8">
-                        <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#5A2E1B] mb-2 font-medium">Cafe 9:50</p>
-                        <p className="font-sans text-xs text-[#5A2E1B]/50">
-                            Made with love by <a href="https://zaaykatech.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#8B4A27] underline transition-colors">zaaykatech.com</a>
+                        <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-[#5A2E1B] mb-2 font-medium">{restaurantName}</p>
+                        <p className="font-sans text-xs text-[#5A2E1B]/60">
+                            Powered by <a href="https://zaaykatech.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#8B4A27] underline font-bold transition-colors">ZaaykaTech</a>
                         </p>
                     </div>
                 </div>

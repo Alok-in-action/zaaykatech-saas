@@ -77,24 +77,32 @@ export default function PublicMenuPreviewPage({ params }: { params: Promise<{ sl
       })),
     }));
 
+    const themeProps = {
+      sections,
+      restaurantName: rest.name,
+      phone: rest.phone,
+      instagram: rest.instagram,
+      address: rest.address,
+    };
+
     const theme = rest.theme_choice?.toLowerCase();
     if (theme === 'cafe950' || theme === 'cafe') {
-      return <Cafe950Theme sections={sections} />;
+      return <Cafe950Theme {...themeProps} />;
     }
     if (theme === 'makedpay') {
-      return <MakedPayTheme sections={sections} restaurantName={rest.name} />;
+      return <MakedPayTheme {...themeProps} />;
     }
     if (theme === 'bombaydarbar') {
-      return <BombayDarbarTheme sections={sections} restaurantName={rest.name} />;
+      return <BombayDarbarTheme {...themeProps} />;
     }
     if (theme === 'montomenu') {
-      return <MontoMenuTheme sections={sections} restaurantName={rest.name} />;
+      return <MontoMenuTheme {...themeProps} />;
     }
     if (theme === 'anjushree') {
-      return <AnjushreeTheme sections={sections} restaurantName={rest.name} />;
+      return <AnjushreeTheme {...themeProps} />;
     }
     if (theme === 'madhuban') {
-      return <MadhubanTheme sections={sections} restaurantName={rest.name} />;
+      return <MadhubanTheme {...themeProps} />;
     }
   }
 
