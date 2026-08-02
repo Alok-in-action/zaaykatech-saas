@@ -21,9 +21,12 @@ interface MenuSection {
 interface BombayDarbarThemeProps {
   sections: MenuSection[];
   restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
 }
 
-export default function BombayDarbarTheme({ sections, restaurantName = "Bombay Darbar Royal Dining" }: BombayDarbarThemeProps) {
+export default function BombayDarbarTheme({ sections, restaurantName = "Royal Heritage Dining", phone, instagram, address }: BombayDarbarThemeProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 

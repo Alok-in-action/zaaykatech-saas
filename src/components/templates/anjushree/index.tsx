@@ -21,9 +21,12 @@ interface MenuSection {
 interface AnjushreeThemeProps {
   sections: MenuSection[];
   restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
 }
 
-export default function AnjushreeTheme({ sections, restaurantName = "Anjushree Resort & Fine Dining" }: AnjushreeThemeProps) {
+export default function AnjushreeTheme({ sections, restaurantName = "Luxury Resort & Dining", phone, instagram, address }: AnjushreeThemeProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 

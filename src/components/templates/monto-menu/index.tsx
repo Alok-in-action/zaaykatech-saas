@@ -21,9 +21,12 @@ interface MenuSection {
 interface MontoMenuThemeProps {
   sections: MenuSection[];
   restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
 }
 
-export default function MontoMenuTheme({ sections, restaurantName = "Monto Artisan Cafe & Bistro" }: MontoMenuThemeProps) {
+export default function MontoMenuTheme({ sections, restaurantName = "Artisan Cafe & Bistro", phone, instagram, address }: MontoMenuThemeProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 

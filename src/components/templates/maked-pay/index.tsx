@@ -21,9 +21,12 @@ interface MenuSection {
 interface MakedPayThemeProps {
   sections: MenuSection[];
   restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
 }
 
-export default function MakedPayTheme({ sections, restaurantName = "Makes'D Shawarma & More" }: MakedPayThemeProps) {
+export default function MakedPayTheme({ sections, restaurantName = "Fast Casual Dining", phone, instagram, address }: MakedPayThemeProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
@@ -54,7 +57,7 @@ export default function MakedPayTheme({ sections, restaurantName = "Makes'D Shaw
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" />
             <input
               type="text"
-              placeholder="Search shawarma, combos..."
+              placeholder="Search menu items, combos..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none focus:border-amber-500 transition-all"

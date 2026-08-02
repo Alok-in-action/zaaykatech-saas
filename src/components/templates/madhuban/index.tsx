@@ -21,9 +21,12 @@ interface MenuSection {
 interface MadhubanThemeProps {
   sections: MenuSection[];
   restaurantName?: string;
+  phone?: string;
+  instagram?: string;
+  address?: string;
 }
 
-export default function MadhubanTheme({ sections, restaurantName = "Madhuban Garden & Authentic Dining" }: MadhubanThemeProps) {
+export default function MadhubanTheme({ sections, restaurantName = "Heritage Garden & Authentic Dining", phone, instagram, address }: MadhubanThemeProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
